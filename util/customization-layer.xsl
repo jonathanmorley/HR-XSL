@@ -12,6 +12,9 @@
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	
 	<xsl:import href="stylesheet"/>
-	<xsl:import href="parameters"/>  
+	<xsl:import href="parameters"/>
+	
+	<!-- Let DocBookXSL know that we are using FOP -->
+	<xsl:param name="fop1.extensions" select="1"/>
 			
 </xsl:stylesheet>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+The notices below are provided with respect to licensed content incorporated herein:
+Copyright HR-XML Consortium. All Rights Reserved. http://www.hrxmlconsortium.org and http://www.hr-xml.org. Terms of license can be found in license.txt.
+Copyright (c) 1997-2013 Open Applications Group, Inc. All Rights Reserved.  http://www.openapplications.org
+-->
+<xsd:schema xmlns="http://www.hr-xml.org/3" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ccts="urn:un:unece:uncefact:documentation:1.1" targetNamespace="http://www.hr-xml.org/3" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:annotation>
+		<xsd:documentation> 
+       Name: Candidate.xsd 
+       Status:  3.3 Release
+       Date this version: 2013-Sep-27 
+       </xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../Common/Components.xsd"/>
+	<xsd:element name="ApplicationForm" type="ApplicationFormType"/>
+	<xsd:complexType name="ApplicationFormType">
+		<xsd:sequence>
+			<xsd:element name="PositionID" minOccurs="0"/>
+			<xsd:element name="PositionTitle" minOccurs="0"/>
+			<xsd:element name="PositionURI" minOccurs="0"/>
+			<xsd:element name="ApplyURI" minOccurs="0"/>
+			<xsd:element name="LanguageCode" minOccurs="0"/>
+			<xsd:element name="CandidateID" minOccurs="0"/>
+			<xsd:element name="Section" type="SectionType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Attachment" type="AttachmentType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ValueList" type="ValueListType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="languageCode" type="LanguageCodeContentType" use="optional"/>
+		<xsd:attributeGroup ref="EffectiveDateAttributeGroup"/>
+		<xsd:attributeGroup ref="VersionIDAttributeGroup"/>	</xsd:complexType>
+	<xsd:complexType name="SectionType">
+		<xsd:sequence>
+			<xsd:element name="ID" minOccurs="0"/>
+			<xsd:element name="Label" minOccurs="0"/>
+			<xsd:element name="MaxOccurs" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="MinOccurs" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="Sequence" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="Question" type="QuestionType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="QuestionType">
+		<xsd:sequence>
+			<xsd:element name="ID" minOccurs="0"/>
+			<xsd:element name="Label" minOccurs="0"/>
+			<xsd:element name="MaxOccurs" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="MinOccurs" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="AnswerRequired" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="Type" type="InputType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="AnswerValueList" type="ValueListType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="AnswerValueRegex" minOccurs="0"/>
+			<xsd:element name="AnswerValue" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="HRXMLNode" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="InputType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="text"/>
+			<xsd:enumeration value="password"/>
+			<xsd:enumeration value="checkbox"/>
+			<xsd:enumeration value="radio"/>
+			<xsd:enumeration value="file"/>
+			<xsd:enumeration value="image"/>
+			<xsd:enumeration value="datetime"/>
+			<xsd:enumeration value="date"/>
+			<xsd:enumeration value="month"/>
+			<xsd:enumeration value="time"/>
+			<xsd:enumeration value="week"/>
+			<xsd:enumeration value="number"/>
+			<xsd:enumeration value="range"/>
+			<xsd:enumeration value="email"/>
+			<xsd:enumeration value="url"/>
+			<xsd:enumeration value="tel"/>
+			<xsd:enumeration value="select-single"/>
+			<xsd:enumeration value="select-multiple"/>
+			<xsd:enumeration value="textarea"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--
+	<xsd:complexType name="AttachmentType">
+		<xsd:sequence>
+			<xsd:element name="AttachmentID" minOccurs="0"/>
+			<xsd:element name="EmbeddedData" minOccurs="0"/>
+			<xsd:element name="EmbeddedText" minOccurs="0"/>
+			<xsd:element name="URI" minOccurs="0"/>
+			<xsd:element name="FileName" minOccurs="0"/>
+			<xsd:element name="Description" minOccurs="0"/>
+			<xsd:element name="FileType" minOccurs="0"/>
+			<xsd:element name="AccessCredentials" type="AttachmentAccessCredentialsType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AttachmentAccessCredentialsType">
+		<xsd:sequence>
+			<xsd:element name="UserID"/>
+			<xsd:element name="TypeCode" minOccurs="0"/>
+			<xsd:element name="Value" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>-->
+	<xsd:complexType name="ValueListType">
+		<xsd:sequence>
+			<xsd:element name="ID" minOccurs="0"/>
+			<xsd:element name="Option" type="ValueListOptionType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ValueListOptionType">
+		<xsd:sequence>
+			<xsd:element name="ID"/>
+			<xsd:element name="Label" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
