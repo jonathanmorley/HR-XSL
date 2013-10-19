@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+# This script builds a Python Egg corresponding to the <package>, an official
+# source tarball, and upload them to http://pypi.python.org
+#
+# The pypi setup used to upload is under ~/pypirc
+#
+
+if [ $# -lt 1 ]; then
+  echo "$0 <package>.tar.bz2"
+  exit 1
+fi
+
+tarball=$1
+tmpdir=`mktemp -d /tmp/dblatex.XXXX`
+where=`pwd`
+
+cp $tarball $tmpdir
+cd $tmpdir
+tar xvfj $tarball
+package_dir=`find . -name "setup.py"`
+package_dir=`dirname $package_dir`
+
+cd $package_dir
+python setup.py register
+python setup.py sdist --formats=bztar upload
+python setup.py bdist_egg upload
+
+cd $where
+rm -r $tmpdir

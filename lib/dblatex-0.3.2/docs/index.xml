@@ -1,0 +1,16 @@
+  <section>
+   <title>Creating an Index</title>
+  <para>
+   An index is automatically generated if some index entries (<sgmltag>indexterm</sgmltag>), telling the terms to put in the index, are written in the document. The <sgmltag>keyword</sgmltag> elements are not printed but are also added to the index.
+  </para>
+<example><title>Index Entry</title>
+  <programlisting>
+<![CDATA[<para>In this paragraph is described the function 
+<function>strcpy</function><indexterm><primary>strcpy</primary></indexterm>.
+</para>
+]]>  </programlisting>
+</example>
+  <para>
+   The index is put at the end of the document. It is not possible to put it somewhere else.
+  </para>
+  </section>

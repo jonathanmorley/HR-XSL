@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<chapter id="sec-thanks">
+<title>Thanks</title>
+
+<para>Thanks to the people who contributed to the project at its early age:
+Jean-Yves Le Ruyet, precursory and hard-working user, Julien Ducourthial for
+his precious help, Vincent Hottier who asked for the embedded LaTeX equations
+support.</para>
+
+<para>Thanks also to the current contributors: David Hedley (newtbl
+implementor), Andreas Hoenen (Debian maintainer), and Nicolas Pernetty
+(Windows port).</para>
+
+<para>Special thanks to the KDE documentation team (especially Philip
+Rodrigues), Michael Smith (from the DocBook Project), and Kai Brommann, for
+their feedbacks, encouragements, and advice.</para>
+</chapter>

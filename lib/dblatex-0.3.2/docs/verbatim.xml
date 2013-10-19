@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+"http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<section id="sec-verbatim">
+<title>Extending the Verbatim Rendering</title>
+
+<para>The programlisting and screen environments are supported by dblatex, but
+the implementation is rather conservative, that is, most of the elements
+embedded in such environments are not rendered like in normal environment
+(e.g. bold, enphasis, etc.). Only the contained text is printed out. For the
+elements whose rendering is lost, <command>dblatex</command> prints out a
+warning message.</para>
+
+<para>For example, let's compile the following programlisting fragment:</para>
+
+<programlisting>&lt;programlisting&gt;
+ 
+zone &lt;replaceable&gt;zone_name&lt;/replaceable&gt; 
+&lt;optional&gt;&lt;replaceable&gt;class&lt;/replaceable&gt;&lt;/optional&gt; { 
+    type delegation-only;
+};    
+ 
+&lt;/programlisting&gt;</programlisting>
+
+<para><command>dblatex</command> warns that the <sgmltag>optional</sgmltag>
+and <sgmltag>replaceable</sgmltag> elements are not supported (i.e. not
+rendered) in the programlisting:</para>
+
+<para><screen>$ dblatex progfrag.xml 
+Build the book set list...
+Build the listings...
+XSLT stylesheets DocBook - LaTeX 2e (devel)
+===================================================
+Warning: the root element is not an article nor a book
+Warning: programlisting wrapped with article
+replaceable not supported in programlisting or screen
+optional not supported in programlisting or screen
+replaceable not supported in programlisting or screen
+replaceable not supported in programlisting or screen
+optional not supported in programlisting or screen
+replaceable not supported in programlisting or screen
+...
+</screen></para>
+
+<para>If you want those elements be formatted in bold, or italic you need to
+override the templates used in <literal>latex.programlisting</literal> mode,
+as follow:</para>
+
+<para><programlisting>&lt;xsl:template match="replaceable|optional" mode="latex.programlisting"&gt;
+   &lt;xsl:param name="co-tagin" select="'&amp;lt;:'"/&gt; <co
+id="co-verb-par1" />
+   &lt;xsl:param name="rnode" select="/"/&gt;          <co id="co-verb-par2" />
+   &lt;xsl:param name="probe" select="0"/&gt;          <co id="co-verb-par3" />
+ 
+   &lt;xsl:call-template name="verbatim.boldseq"&gt; <co id="co-verb-template" />
+     &lt;xsl:with-param name="co-tagin" select="$co-tagin"/&gt;
+     &lt;xsl:with-param name="rnode" select="$rnode"/&gt;
+     &lt;xsl:with-param name="probe" select="$probe"/&gt;
+   &lt;/xsl:call-template&gt;
+&lt;/xsl:template&gt;</programlisting><calloutlist>
+<callout arearefs="co-verb-par1 co-verb-par2 co-verb-par3">
+<para>These parameters are required in <literal>latex.programlisting</literal>
+mode.</para>
+</callout>
+
+<callout arearefs="co-verb-template">
+<para>The predefined template makes bold the verbatim text of the
+element.</para>
+</callout>
+</calloutlist></para>
+
+<para>If formatting setup is not enough, you can also render these elements
+as if they were in a normal environment. To do this, you need to override the
+templates used in <literal>latex.programlisting</literal> mode, as
+follow:</para>
+
+<para><programlisting>&lt;xsl:template match="replaceable|optional" mode="latex.programlisting"&gt;
+   &lt;xsl:param name="co-tagin" select="'&amp;lt;:'"/&gt;
+   &lt;xsl:param name="rnode" select="/"/&gt;
+   &lt;xsl:param name="probe" select="0"/&gt;
+ 
+   &lt;xsl:call-template name="verbatim.embed"&gt; <co id="co-verb-template2" />
+     &lt;xsl:with-param name="co-tagin" select="$co-tagin"/&gt;
+     &lt;xsl:with-param name="rnode" select="$rnode"/&gt;
+     &lt;xsl:with-param name="probe" select="$probe"/&gt;
+   &lt;/xsl:call-template&gt;
+&lt;/xsl:template&gt; </programlisting><calloutlist>
+<callout arearefs="co-verb-template2">
+<para>To enable the normal mode rendering within a verbatim environment, call
+the verbatim.embed template, and pass the mandatory parameters.</para>
+</callout>
+</calloutlist></para>
+
+<para></para>
+</section>

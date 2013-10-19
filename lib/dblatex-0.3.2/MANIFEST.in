@@ -1,0 +1,10 @@
+include setup.py
+include setup.cfg
+include MANIFEST.in
+include COPYRIGHT
+recursive-include docs *
+recursive-include latex *
+recursive-include lib *
+recursive-include scripts *
+recursive-include tests *
+recursive-include xsl *

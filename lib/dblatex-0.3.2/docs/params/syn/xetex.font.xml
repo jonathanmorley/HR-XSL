@@ -1,0 +1,8 @@
+<xsl:param name="xetex.font">
+  <xsl:text>\setmainfont{DejaVu Serif}
+</xsl:text>
+  <xsl:text>\setsansfont{DejaVu Sans}
+</xsl:text>
+  <xsl:text>\setmonofont{DejaVu Sans Mono}
+</xsl:text>
+</xsl:param>

@@ -1,0 +1,8 @@
+#
+# Configuration file for dblatex documentation (manual, release notes)
+#
+TexInputs: ../latex//
+PdfInputs: ../latex/graphics
+TexStyle:  docbook
+XslParam:  manual.xsl
+Options:   -b pdftex
