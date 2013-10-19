@@ -1,6 +1,5 @@
-
 John Smith
-     _________________________________________________________________
+     __________________________________________________________________
 
     Mobile (217) 555-4842
     E-mail <john.smith@acme.org>
@@ -8,8 +7,8 @@ John Smith
 
    Objective. An enthusiastic, self-motivating software engineer with a
    proven track record in application development. An active team player
-   constantly looking for ways to improve team communication and skills
-   to better fit the business development.
+   constantly looking for ways to improve team communication and skills to
+   better fit the business development.
 
 Work Experience
 
@@ -39,6 +38,6 @@ Qualifications
 
      * Programming Languages: Java, C++, XML (SAX and DOM API), XSLT
      * J2EE: JMS, JDBC, Reflection API, Transaction API
-     * Other skills: parallel computer architectures,
-       internationalization with Unicode, performance analysis and
-       optimization, technical writing
+     * Other skills: parallel computer architectures, internationalization
+       with Unicode, performance analysis and optimization, technical
+       writing
