@@ -14,7 +14,7 @@
 	<xsl:import href="stylesheet"/>
 	<xsl:import href="parameters"/>
 	
-	<!-- Let DocBookXSL know that we are using FOP -->
+	<!-- Let XSL know that we are using FOP -->
 	<xsl:param name="fop1.extensions" select="1"/>
 			
 </xsl:stylesheet>
