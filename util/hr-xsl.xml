@@ -27,7 +27,7 @@ Author: Trevor Harmon
 	<property name="docbook.xml.dir" value="${hr-xsl.basedir}/lib/docbook-xml-4.5"/> 
 	
 	<!-- Location of HR-XML distribution -->
-	<property name="hr-xml.dir" value="${hr-xsl.basedir}/lib/hr-xml-2.5/HR-XML-2_5"/>
+	<property name="hr-xml.dir" value="${hr-xsl.basedir}/lib/hr-xml-3.3"/>
 	
 	<!-- Location of FOP directory -->
 	<property name="fop.dir" value="${hr-xsl.basedir}/lib/fop-1.1"/>
@@ -278,7 +278,7 @@ Author: Trevor Harmon
 		<attribute name="in" description="The filename of the HR-XML resume"/>
 		<sequential>
 			<schemavalidate file="@{in}" lenient="false" failonerror="true" warn="true">
-				<schema namespace="http://ns.hr-xml.org/2007-04-15" file="${hr-xml.dir}/SEP/Resume.xsd"/>
+				<schema namespace="http://www.hr-xml.org/3" file="${hr-xml.dir}/org_hr-xml/3_3/Developer/Nouns/Candidate.xsd"/>
 			</schemavalidate>
 		</sequential>
 	</macrodef>
